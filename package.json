@@ -2,7 +2,6 @@
     "private": true,
     "type": "module",
     "scripts": {
-        
         "dev": "vite"
     },
     "devDependencies": {
@@ -14,5 +13,10 @@
         "postcss": "^8.5.3",
         "tailwindcss": "^4.1.5",
         "vite": "^6.2.4"
+    },
+    "dependencies": {
+        "build": "^0.1.4",
+        "npm": "^11.3.0",
+        "run": "^1.5.0"
     }
 }
