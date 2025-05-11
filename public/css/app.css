@@ -1,0 +1,118 @@
+/* تنسيقات مخصصة بدون Vite أو Tailwind */
+
+/* الخلفية العامة */
+body {
+    background-color: #fdecef; /* وردي فاتح */
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* العنوان الرئيسي */
+h1 {
+    color: #14532d; /* أخضر غامق */
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* كروت المنتجات */
+.card {
+    background-color: #f8d7da; /* وردي متوسط */
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-bottom: 20px;
+    width: 250px; /* هذا هو المفتاح لظهور البطاقات جنب بعض */
+}
+
+/* صورة المنتج */
+.card img {
+    height: 240px;
+    object-fit: cover;
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+/* اسم المنتج */
+.card h2 {
+    color: #333;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+/* زر عرض التفاصيل */
+.card a {
+    background-color: #14532d;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.card a:hover {
+    background-color: #0f3d22;
+}
+
+/* الحاوية الخاصة بالبطاقات */
+.products-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* الهيدر */
+header {
+    background-color: #f8d7da;
+    padding: 15px;
+}
+
+header h2 {
+    color: #14532d;
+    margin: 0 20px;
+}
+
+header nav a {
+    margin-left: 15px;
+    text-decoration: none;
+    color: #14532d;
+    font-weight: bold;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+/* الفوتر */
+footer {
+    background-color: #fce4ec;
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+.btn-glow {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-glow::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(255,255,255,0.4), transparent);
+    transform: skewX(-20deg);
+    transition: all 0.5s ease;
+}
+
+.btn-glow:hover::after {
+    left: 130%;
+}
