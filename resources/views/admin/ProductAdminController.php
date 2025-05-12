@@ -8,42 +8,43 @@ use App\Models\Product;
 
 class ProductAdminController extends Controller
 {
-    // عرض قائمة المنتجات
+    // عرض المنتجات في لوحة التحكم
     public function index()
     {
         $products = Product::all();
         return view('admin.products.index', compact('products'));
     }
 
-    // عرض صفحة إنشاء منتج
+    // عرض نموذج إضافة منتج
     public function create()
     {
         return view('admin.products.create');
     }
 
-    // حفظ منتج جديد
+    // تخزين المنتج الجديد
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
             'price' => 'required|numeric',
-            'description' => 'required',
-            'image' => 'required|image'
+            'image' => 'required|image|mimes:jpg,jpeg,png,gif,webp|max:2048'
         ]);
 
-        $imagePath = $request->file('image')->store('products', 'public');
+        $imageName = time() . '.' . $request->image->extension();
+        $request->image->move(public_path('images'), $imageName);
 
         Product::create([
-            'name'        => $request->name,
-            'price'       => $request->price,
+            'name' => $request->name,
             'description' => $request->description,
-            'image'       => basename($imagePath),
+            'price' => $request->price,
+            'image' => $imageName
         ]);
 
-        return redirect()->route('admin.products.index')->with('success', 'تمت إضافة المنتج بنجاح');
+        return redirect()->route('admin.products.index')->with('success', 'تم إضافة المنتج بنجاح');
     }
 
-    // عرض صفحة التعديل
+    // عرض صفحة تعديل منتج
     public function edit($id)
     {
         $product = Product::findOrFail($id);
@@ -56,40 +57,38 @@ class ProductAdminController extends Controller
         $product = Product::findOrFail($id);
 
         $request->validate([
-            'name'        => 'required',
-            'price'       => 'required|numeric',
-            'description' => 'required',
-            'image'       => 'nullable|image'
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'price' => 'required|numeric',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,gif,webp|max:2048'
         ]);
 
-        $product->name        = $request->name;
-        $product->price       = $request->price;
+        $product->name = $request->name;
         $product->description = $request->description;
+        $product->price = $request->price;
 
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('products', 'public');
-            $product->image = basename($imagePath);
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('images'), $imageName);
+            $product->image = $imageName;
         }
 
         $product->save();
 
-        return redirect()->route('admin.products.index')->with('success', 'تم تحديث المنتج بنجاح');
+        return redirect()->route('admin.products.index')->with('success', 'تم تعديل المنتج بنجاح');
     }
 
     // حذف منتج
     public function destroy($id)
-{
-    $product = Product::findOrFail($id);
+    {
+        $product = Product::findOrFail($id);
 
-    // حذف الصورة إذا كانت موجودة
-    if ($product->image && file_exists(public_path('images/' . $product->image))) {
-        unlink(public_path('images/' . $product->image));
+        if ($product->image && file_exists(public_path('images/' . $product->image))) {
+            unlink(public_path('images/' . $product->image));
+        }
+
+        $product->delete();
+
+        return redirect()->route('admin.products.index')->with('success', 'تم حذف المنتج بنجاح');
     }
-
-    $product->delete();
-
-    return redirect()->route('admin.products.index')->with('success', 'تم حذف المنتج بنجاح');
-}
-
-
 }

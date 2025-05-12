@@ -1,50 +1,43 @@
 @extends('layouts.app')
 
-@section('title', 'تعديل منتج')
+@section('title', 'تعديل المنتج')
 
 @section('content')
-<div class="flex items-center justify-center min-h-screen bg-pink-100 py-10">
-    <div class="bg-white rounded-xl shadow-lg p-8 w-full max-w-md border border-green-700">
-        <h2 class="text-center text-2xl font-bold text-green-800 mb-6">تعديل المنتج</h2>
-
-        @if ($errors->any())
-            <div class="bg-red-100 text-red-700 p-4 rounded mb-4 text-sm">
-                <ul class="list-disc pr-4">
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-
-        <form action="{{ route('admin.products.update', $product->id) }}" method="POST" enctype="multipart/form-data" class="space-y-4">
+<div style="min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 30px;">
+    <div style="background-color: #f8d7da; padding: 30px; border-radius: 12px; width: 100%; max-width: 500px;">
+        <h2 style="margin-bottom: 25px; color: #14532d; text-align: center;">تعديل المنتج</h2>
+        <form action="{{ route('admin.products.update', $product->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
-            <div>
-                <label class="block text-sm text-gray-700 mb-1">اسم المنتج</label>
-                <input type="text" name="name" value="{{ $product->name }}" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-800">
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 6px;">اسم المنتج</label>
+                <input type="text" name="name" value="{{ $product->name }}" required
+                       style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #ccc;">
             </div>
 
-            <div>
-                <label class="block text-sm text-gray-700 mb-1">الوصف</label>
-                <textarea name="description" rows="3" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-800">{{ $product->description }}</textarea>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 6px;">الوصف</label>
+                <textarea name="description" required
+                          style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #ccc;">{{ $product->description }}</textarea>
             </div>
 
-            <div>
-                <label class="block text-sm text-gray-700 mb-1">السعر</label>
-                <input type="text" name="price" value="{{ $product->price }}" class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-800">
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 6px;">السعر</label>
+                <input type="number" name="price" value="{{ $product->price }}" required
+                       style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #ccc;">
             </div>
 
-            <div>
-                <label class="block text-sm text-gray-700 mb-1">الصورة الحالية</label>
-                <img src="{{ asset('images/' . $product->image) }}" class="w-40 mb-3 rounded shadow">
-                <input type="file" name="image" class="w-full border rounded px-3 py-2 bg-white">
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 6px;">الصورة</label>
+                <input type="file" name="image"
+                       style="width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #ccc;">
             </div>
 
-            <div class="text-center mt-6">
-                <button type="submit" class="bg-green-800 text-white px-6 py-2 rounded hover:bg-green-900 transition">تحديث</button>
-            </div>
+            <button type="submit"
+                    style="background-color: #14532d; color: white; border: none; padding: 12px 20px; border-radius: 6px; width: 100%;">
+                حفظ التعديلات
+            </button>
         </form>
     </div>
 </div>
