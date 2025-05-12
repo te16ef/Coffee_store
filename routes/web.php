@@ -1,8 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use App\Models\Product;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\Admin\ProductAdminController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -33,12 +37,16 @@ Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
 
-// صفحة سياسة الخصوصية
+// سياسة الخصوصية
 Route::get('/privacy', function () {
     return view('privacy');
 })->name('privacy');
-Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
 
-//  تواصل معنا
-use App\Http\Controllers\ContactController;
+// تواصل معنا (POST)
 Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.send');
+
+// لوحة التحكم - إنشاء منتج
+Route::get('/admin/products/create', [ProductAdminController::class, 'create'])->name('admin.products.create');
+
+// لوحة التحكم - حفظ منتج
+Route::post('/admin/products', [ProductAdminController::class, 'store'])->name('admin.products.store');
