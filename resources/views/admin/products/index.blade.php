@@ -1,35 +1,124 @@
 @extends('layouts.app')
 
-@section('title', 'عرض المنتجات')
+@section('title', 'منتجاتنا')
 
 @section('content')
-<div style="min-height: 100vh; padding: 40px 20px;">
-    <h2 style="font-size: 1.5rem; color: #14532d; text-align: center; margin-bottom: 30px;">كل المنتجات</h2>
+<style>
+    body {
+        background-color: #fdecef;
+    }
 
-    <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
-        @foreach($products as $product)
-            <div style="background-color: #f8d7da; border-radius: 8px; padding: 15px; width: 280px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); text-align: center;">
-                <img src="{{ $product->image ? asset('images/' . $product->image) : asset('images/beige-bg.jpg') }}"
-                     alt="{{ $product->name }}"
-                     style="width: 100%; height: 200px; object-fit: cover; border-radius: 6px; margin-bottom: 10px;">
+    .heading-card {
+        background-color: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(4px);
+        border-radius: 10px;
+        padding: 20px 40px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        max-width: 400px;
+        margin: 30px auto 0;
+        text-align: center;
+    }
 
-                <h3 style="margin-bottom: 5px;">{{ $product->name }}</h3>
-                <p style="margin-bottom: 5px;">السعر: {{ $product->price }} ريال</p>
+    .heading-card h1 {
+        font-size: 1.6rem;
+        color: #14532d;
+        font-weight: bold;
+        margin: 0;
+    }
 
-                <a href="{{ route('admin.products.edit', $product->id) }}"
-                   style="display: inline-block; background-color: #14532d; color: white; padding: 6px 12px; border-radius: 6px; margin-top: 10px;">تعديل</a>
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 30px;
+        padding: 40px 20px;
+    }
 
-                <form action="{{ route('admin.products.destroy', $product->id) }}" method="POST" style="display: inline;">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit"
-                            onclick="return confirm('هل أنت متأكد من حذف المنتج؟');"
-                            style="background-color: #d63384; color: white; padding: 6px 12px; border: none; border-radius: 6px;">حذف</button>
-                </form>
-            </div>
-        @endforeach
+    .product-card {
+        background-color: #f5f5dc;
+        border-radius: 10px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        text-align: center;
+        transition: transform 0.3s ease;
+        padding: 20px;
+    }
+
+    .product-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .product-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 15px;
+    }
+
+    .product-card h2 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    .product-card p {
+        font-size: 1rem;
+        color: #14532d;
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+
+    .glow-button {
+        background-color: #14532d;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 6px;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 0.9rem;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .glow-button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -75%;
+        width: 50%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: skewX(-25deg);
+        animation: shine 2.5s infinite;
+    }
+
+    @keyframes shine {
+        0% { left: -75%; }
+        100% { left: 125%; }
+    }
+</style>
+
+<div class="min-h-screen">
+    <!-- عنوان -->
+    <div class="heading-card">
+        <h1>منتجاتنا</h1>
+    </div>
+
+    <!-- شبكة المنتجات -->
+    <div class="product-grid">
+        @forelse ($products as $product)
+            @if($product->name && $product->price)
+                <div class="product-card">
+                    <img src="{{ $product->image ? asset('images/' . $product->image) : asset('images/beige-bg.jpg') }}"
+                         alt="{{ $product->name }}">
+                    <h2>{{ $product->name }}</h2>
+                    <p>{{ $product->price }} ريال</p>
+                    <a href="{{ route('products.show', $product->id) }}" class="glow-button">عرض التفاصيل</a>
+                </div>
+            @endif
+        @empty
+            <p style="text-align: center;">لا توجد منتجات حالياً.</p>
+        @endforelse
     </div>
 </div>
 @endsection
-
-
