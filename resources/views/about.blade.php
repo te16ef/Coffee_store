@@ -62,6 +62,15 @@
             <span style="font-size: 0.9rem; color: #888;">10-5-2025</span>
         </div>
 
+      
+      
+        <div class="text-center mt-10">
+    <a href="{{ route('welcome') }}"
+       class="inline-block bg-pink-500 text-white font-bold py-2 px-6 rounded-lg shadow-lg animate-pulse hover:scale-105 transition transform duration-300">
+        Next
+    </a>
+</div>
+
     </div>
 </div>
 @endsection

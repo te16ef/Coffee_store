@@ -41,21 +41,22 @@
         border: none;
         border-radius: 6px;
         cursor: pointer;
+        margin-top: 8px;
     }
 
     .card button:hover {
         background-color: #0f3d22;
     }
 
-    .success-message {
+    .alert-box {
         display: none;
         background-color: #d1e7dd;
         color: #0f5132;
-        padding: 20px;
+        padding: 15px 20px;
         border-radius: 10px;
+        text-align: center;
         max-width: 400px;
         margin: 0 auto 30px auto;
-        text-align: center;
         box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
@@ -87,11 +88,14 @@
 
     @if(count($cart) > 0)
 
-        <!-- إشعار نجاح الطلب -->
-        <div id="orderSuccess" class="success-message">
-            <p style="font-size: 1.2rem;">حسابك علينا يالغالي!</p>
-            <p style="font-size: 0.9rem;">تم إصدار الطلب بنجاح ✨</p>
-            <a href="{{ route('products.index') }}" style="display: inline-block; margin-top: 10px; background-color: #d63384; color: white; padding: 8px 16px; border-radius: 6px; text-decoration: none;">تم</a>
+        @if (session('success'))
+            <div id="successBox" class="alert-box">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        <div id="orderSuccess" class="alert-box" style="display: none;">
+            <p style="font-size: 1.1rem;">حسابك علينا يالغالي! تم اصدار طلبك </p>
         </div>
 
         <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
@@ -105,12 +109,11 @@
                         @method('DELETE')
                         <button type="submit">إزالة من السلة</button>
                     </form>
+       <a href="{{ route('checkout') }}" style="display: inline-block; background-color: #14532d; color: white; padding: 8px 16px; border-radius: 6px; margin-top: 8px; text-decoration: none;">
+    إتمام الطلب
+</a>
                 </div>
             @endforeach
-        </div>
-
-        <div style="text-align: center; margin-top: 30px;">
-            <button onclick="showOrderSuccess()" style="background-color: #14532d; color: white; padding: 10px 20px; border-radius: 6px;">إتمام الطلب</button>
         </div>
 
         <script>
@@ -118,10 +121,19 @@
                 const box = document.getElementById('orderSuccess');
                 box.style.display = 'block';
                 box.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
                 setTimeout(() => {
                     box.style.display = 'none';
-                }, 3000);
+                }, 5000);
+            }
+
+            window.onload = function () {
+                const successBox = document.getElementById('successBox');
+                if (successBox) {
+                    successBox.style.display = 'block';
+                    setTimeout(() => {
+                        successBox.style.display = 'none';
+                    }, 5000);
+                }
             }
         </script>
 

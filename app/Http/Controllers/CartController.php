@@ -7,33 +7,37 @@ use App\Models\Product;
 
 class CartController extends Controller
 {
+    // عرض السلة
     public function index()
     {
-        $cartItems = session()->get('cart', []);
-        return view('cart.index', compact('cartItems'));
+        return view('cart.index');
     }
 
+    // إضافة منتج للسلة
     public function add(Request $request, $id)
     {
         $product = Product::findOrFail($id);
+
         $cart = session()->get('cart', []);
 
         if (isset($cart[$id])) {
-            $cart[$id]['quantity'] += 1;
+            $cart[$id]['quantity']++;
         } else {
             $cart[$id] = [
                 "name" => $product->name,
+                "quantity" => 1,
+                "price" => $product->price,
                 "image" => $product->image,
-                "quantity" => 1
             ];
         }
 
         session()->put('cart', $cart);
 
-        return redirect()->back()->with('success', ' ذوقك بطل ! تمت اضافته بنجاح');
+        return redirect()->route('cart.index')->with('success', 'ذوقك بطل ! تمت إضافته بنجاح');
     }
 
-    public function remove($id)
+    // إزالة منتج من السلة
+    public function remove(Request $request, $id)
     {
         $cart = session()->get('cart', []);
 
@@ -42,6 +46,6 @@ class CartController extends Controller
             session()->put('cart', $cart);
         }
 
-        return redirect()->route('cart.index')->with('success', 'تمت إزالة المنتج من السلة');
+        return redirect()->route('cart.index')->with('success', 'تمت إزالة المنتج من السلة.');
     }
 }

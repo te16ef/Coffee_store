@@ -7,6 +7,7 @@
     @media (max-width: 640px) {
         .home-box {
             padding: 25px 20px !important;
+            max-width: 90% !important;
         }
 
         .home-box h2 {
@@ -20,6 +21,8 @@
         .home-box a {
             width: 100%;
             display: block;
+            font-size: 1rem;
+            padding: 12px 0;
         }
     }
 </style>
@@ -39,8 +42,9 @@
             للذويقين بس !
         </p>
 
-        <a href="{{ route('products.index') }}" class="glow-btn" style="background-color: #14532d; color: white; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: bold; display: inline-block;">
-            ابدأ التذوّق
+        <a href="{{ route('products.index') }}" class="glow-btn"
+           style="background-color: #14532d; color: white; padding: 10px 0; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 0.95rem; display: block; width: 90%; margin: 0 auto;">
+        ابدأ التذوّق
         </a>
     </div>
 </div>
