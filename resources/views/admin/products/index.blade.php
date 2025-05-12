@@ -1,41 +1,27 @@
 @extends('layouts.app')
 
-@section('title', 'لوحة التحكم - المنتجات')
+@section('title', 'عرض المنتجات')
 
 @section('content')
-<div class="container mx-auto py-10">
-    <h2 class="text-2xl font-bold mb-6 text-center text-green-900">إدارة المنتجات</h2>
+<div style="min-height: 100vh; padding: 40px 20px;">
+    <h2 style="font-size: 1.5rem; color: #14532d; text-align: center; margin-bottom: 30px;">كل المنتجات</h2>
 
-    @if (session('success'))
-        <div class="bg-green-100 text-green-800 p-4 rounded mb-4 text-center shadow">
-            {{ session('success') }}
-        </div>
-    @endif
-
-    <div class="text-right mb-4">
-        <a href="{{ route('admin.products.create') }}" class="bg-pink-500 hover:bg-pink-600 text-white font-semibold py-2 px-4 rounded shadow">
-            + إضافة منتج جديد
-        </a>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        @foreach ($products as $product)
-            <div class="bg-white rounded-lg shadow p-4 text-center">
-                <img src="{{ asset('images/' . $product->image) }}" alt="{{ $product->name }}" class="w-full h-40 object-cover rounded mb-3">
-                <h3 class="text-lg font-semibold text-green-900 mb-1">{{ $product->name }}</h3>
-                <p class="text-gray-600 text-sm mb-2">{{ $product->description }}</p>
-                <p class="text-pink-600 font-bold mb-2">{{ $product->price }} ريال</p>
-
-                <div class="flex justify-center space-x-2 rtl:space-x-reverse">
-                    <a href="{{ route('admin.products.edit', $product->id) }}" class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded">تعديل</a>
-                    <form action="{{ route('admin.products.destroy', $product->id) }}" method="POST" onsubmit="return confirm('هل أنت متأكد من حذف المنتج؟')">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded">حذف</button>
-                    </form>
-                </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+        @foreach($products as $product)
+            <div style="background-color: #f8d7da; border-radius: 8px; padding: 15px; width: 280px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); text-align: center;">
+                <img src="{{ asset('images/' . $product->image) }}" alt="{{ $product->name }}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 6px; margin-bottom: 10px;">
+                <h3 style="margin-bottom: 5px;">{{ $product->name }}</h3>
+                <p style="margin-bottom: 5px;">السعر: {{ $product->price }} ريال</p>
+                <a href="{{ route('admin.products.edit', $product->id) }}" style="display: inline-block; background-color: #14532d; color: white; padding: 6px 12px; border-radius: 6px; margin-top: 10px;">تعديل</a>
+                <form action="{{ route('admin.products.destroy', $product->id) }}" method="POST" style="display: inline;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" onclick="return confirm('هل أنت متأكد من حذف المنتج؟');" style="background-color: #d63384; color: white; padding: 6px 12px; border: none; border-radius: 6px;">حذف</button>
+                </form>
             </div>
         @endforeach
     </div>
 </div>
 @endsection
+
+
