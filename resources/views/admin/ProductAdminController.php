@@ -78,10 +78,18 @@ class ProductAdminController extends Controller
 
     // حذف منتج
     public function destroy($id)
-    {
-        $product = Product::findOrFail($id);
-        $product->delete();
+{
+    $product = Product::findOrFail($id);
 
-        return redirect()->route('admin.products.index')->with('success', 'تم حذف المنتج بنجاح');
+    // حذف الصورة إذا كانت موجودة
+    if ($product->image && file_exists(public_path('images/' . $product->image))) {
+        unlink(public_path('images/' . $product->image));
     }
+
+    $product->delete();
+
+    return redirect()->route('admin.products.index')->with('success', 'تم حذف المنتج بنجاح');
+}
+
+
 }

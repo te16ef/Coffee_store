@@ -68,3 +68,6 @@ Route::post('/admin/products', [ProductAdminController::class, 'store'])->name('
 Route::get('/admin/products/{id}/edit', [ProductAdminController::class, 'edit'])->name('admin.products.edit');
 Route::put('/admin/products/{id}', [ProductAdminController::class, 'update'])->name('admin.products.update');
 Route::delete('/admin/products/{id}', [ProductAdminController::class, 'destroy'])->name('admin.products.destroy');
+Route::get('/admin/products', [ProductAdminController::class, 'index'])->name('admin.products.index');
+Route::get('/admin/products/create', [ProductAdminController::class, 'create'])->name('admin.products.create');
+
