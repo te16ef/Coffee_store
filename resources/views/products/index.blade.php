@@ -5,7 +5,9 @@
 @section('content')
 <style>
     body {
-        background-color: #fdecef;
+       background: url('{{ asset('images/coffee-bg.jpg') }}') no-repeat center center fixed;
+        background-size: cover;
+    
     }
 
     .heading-card {

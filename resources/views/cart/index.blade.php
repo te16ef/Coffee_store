@@ -4,6 +4,10 @@
 
 @section('content')
 <style>
+    body {
+        background: url('{{ asset('images/coffee-bg.jpg') }}') no-repeat center center fixed;
+        background-size: cover;
+    }
     .card {
         background-color: #f8d7da;
         border-radius: 10px;

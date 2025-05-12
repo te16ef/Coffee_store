@@ -1,12 +1,7 @@
 /* تنسيقات مخصصة بدون Vite أو Tailwind */
 
 /* الخلفية العامة */
-body {
-    background-color: #fdecef; /* وردي فاتح */
-    font-family: sans-serif;
-    margin: 0;
-    padding: 0;
-}
+
 
 /* العنوان الرئيسي */
 h1 {
