@@ -8081,6 +8081,19 @@
     "platform": {
         "php": "^8.2"
     },
+     "config": {
+        "process-timeout": 1800,
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "discard-changes": true,
+        "classmap-authoritative": true,
+        "apcu-autoloader": true 
+    
+},
+        
+     
+     
     "platform-dev": {},
     "plugin-api-version": "2.6.0"
 }
