@@ -123,7 +123,9 @@
     <div class="product-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; padding: 40px 20px;">
         @foreach ($products as $product)
             <div class="product-card">
-                <img src="{{ $product->image ? asset('images/' . $product->image) : asset('images/beige-bg.jpg') }}" alt="{{ $product->name }}">
+                                       
+
+                <img src="{{ $product->image }}" alt="no picture">
                 <h3>{{ $product->name }}</h3>
                 <p>{{ $product->price }} ريال</p>
                 <a href="{{ route('products.show', $product->id) }}" class="glow-button">عرض التفاصيل</a>

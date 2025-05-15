@@ -24,6 +24,7 @@ class ProductAdminController extends Controller
     // تخزين المنتج الجديد
     public function store(Request $request)
     {
+         dd($request);    
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string',

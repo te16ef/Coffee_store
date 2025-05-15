@@ -1,21 +1,33 @@
 body {
-    background: url('/images/coffee-bg.jpg') no-repeat center center fixed;
+    background: url('../images/coffee-bg.jpg') no-repeat center center fixed;
     background-size: cover;
 }
 
-/* صفحة عرض المنتجات */
-.products-wrapper {
-    min-height: 100vh;
-    padding: 40px 20px;
+.heading-card {
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(4px);
+    border-radius: 10px;
+    padding: 20px 40px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    max-width: 400px;
+    margin: 30px auto 0;
+    text-align: center;
+}
+
+.heading-card h1 {
+    font-size: 1.6rem;
+    color: #14532d;
+    font-weight: bold;
+    margin: 0;
 }
 
 .product-card {
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: #f5f5dc;
     border-radius: 10px;
-    padding: 15px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     text-align: center;
     transition: transform 0.3s ease;
+    padding: 20px;
 }
 
 .product-card:hover {
@@ -23,203 +35,56 @@ body {
 }
 
 .product-card img {
-    height: 180px;
     width: 100%;
+    height: 200px;
     object-fit: cover;
     border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.product-card h2 {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #333;
     margin-bottom: 10px;
 }
 
-.product-card h3 {
-    font-size: 1.1rem;
-    color: #333;
-    margin-bottom: 8px;
-}
-
-.product-card .price {
+.product-card p {
+    font-size: 1rem;
     color: #14532d;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
-.product-card a {
+.glow-button {
     background-color: #14532d;
     color: white;
-    padding: 8px 16px;
+    padding: 10px 20px;
     border-radius: 6px;
     text-decoration: none;
     display: inline-block;
     font-size: 0.9rem;
+    position: relative;
+    overflow: hidden;
 }
 
-.product-card a:hover {
+.glow-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: skewX(-25deg);
+    animation: shine 2.5s infinite;
+}
+
+.card button:hover {
     background-color: #0f3d22;
 }
 
-/* صفحة عرض التفاصيل */
-.product-details {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 40px 20px;
-}
-
-.product-box {
-    background-color: rgba(255, 255, 255, 0.95);
-    padding: 30px;
-    border-radius: 12px;
-    max-width: 600px;
-    width: 100%;
-    text-align: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.product-box img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 20px;
-}
-
-.product-box h2 {
-    font-size: 1.8rem;
-    color: #333;
-    margin-bottom: 10px;
-}
-
-.product-box p {
-    color: #555;
-    margin-bottom: 15px;
-}
-
-.product-box .price {
-    font-size: 1.2rem;
-    color: #14532d;
-    font-weight: bold;
-    margin-bottom: 25px;
-}
-
-.product-box .btns a,
-.product-box .btns button {
-    display: inline-block;
-    margin: 0 10px;
-    padding: 10px 18px;
-    font-size: 0.95rem;
-    border-radius: 6px;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-}
-
-.btn-back {
-    background-color: #14532d;
-    color: white;
-}
-
-.btn-back:hover {
-    background-color: #0f3d22;
-}
-
-.btn-add {
-    background-color: #be185d;
-    color: white;
-}
-
-.btn-add:hover {
-    background-color: #9d174d;
-}
-
-
-    .card {
-        background-color: #f8d7da;
-        border-radius: 10px;
-        padding: 15px;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-        max-width: 300px;
-        margin: auto;
-        text-align: center;
-    }
-
-    .card img {
-        height: 220px;
-        width: 100%;
-        object-fit: cover;
-        border-radius: 8px;
-        margin-bottom: 10px;
-    }
-
-    .card h3 {
-        font-size: 1.1rem;
-        color: #333;
-        margin-bottom: 8px;
-    }
-
-    .card p {
-        font-size: 0.9rem;
-        color: #555;
-        margin-bottom: 10px;
-    }
-
-    .card button {
-        background-color: #14532d;
-        color: white;
-        padding: 8px 16px;
-        border: none;
-        border-radius: 6px;
-        cursor: pointer;
-    }
-
-    .card button:hover {
-        background-color: #0f3d22;
-    }
-
-    
-    .card {
-        background-color: #f8d7da;
-        border-radius: 10px;
-        padding: 15px;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-        max-width: 300px;
-        margin: auto;
-        text-align: center;
-    }
-
-    .card img {
-        height: 220px;
-        width: 100%;
-        object-fit: cover;
-        border-radius: 8px;
-        margin-bottom: 10px;
-    }
-
-    .card h3 {
-        font-size: 1.1rem;
-        color: #333;
-        margin-bottom: 8px;
-    }
-
-    .card p {
-        font-size: 0.9rem;
-        color: #555;
-        margin-bottom: 10px;
-    }
-
-    .card button {
-        background-color: #14532d;
-        color: white;
-        padding: 8px 16px;
-        border: none;
-        border-radius: 6px;
-        cursor: pointer;
-    }
-
-    .card button:hover {
-        background-color: #0f3d22;
-    }
-     
-    .start-taste-btn {
+.start-taste-btn {
     background-color: #14532d;
     color: white;
     padding: 12px 24px;
@@ -245,11 +110,6 @@ body {
     background: rgba(255, 255, 255, 0.3);
     transform: skewX(-25deg);
     animation: shine 2s infinite;
-}
-
-@keyframes shine {
-    0% { left: -75%; }
-    100% { left: 125%; }
 }
 
 .glow-btn {
@@ -283,4 +143,40 @@ body {
 @keyframes shine {
     0% { left: -75%; }
     100% { left: 125%; }
+}
+
+/* Responsive Fixes for Mobile */
+@media (max-width: 768px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 20px;
+        padding: 20px 10px;
+    }
+
+    .product-card {
+        padding: 12px;
+    }
+
+    .product-card img {
+        height: 150px;
+    }
+
+    .product-card h2 {
+        font-size: 1rem;
+    }
+
+    .product-card p {
+        font-size: 0.9rem;
+    }
+
+    .start-taste-btn,
+    .glow-btn {
+        padding: 10px 18px;
+        font-size: 0.95rem;
+        border-radius: 6px;
+    }
+
+    .heading-card h1 {
+        font-size: 1.3rem;
+    }
 }

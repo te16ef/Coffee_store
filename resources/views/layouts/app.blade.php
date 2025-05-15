@@ -17,6 +17,11 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
+        body {
+            background: url('{{ asset('images/coffee-bg.jpg') }}') no-repeat center center fixed;
+            background-size: cover;
+        }
+
         .header-container {
             position: relative;
             text-align: center;

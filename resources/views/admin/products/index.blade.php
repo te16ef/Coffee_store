@@ -113,23 +113,21 @@
 </style>
 
 <div class="min-h-screen">
-    <!-- بطاقة عنوان -->
     <div class="heading-card">
         <h1>منتجاتنا</h1>
     </div>
 
-    <!-- شبكة المنتجات -->
     <div class="product-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; padding: 40px 20px;">
-        @forelse ($products as $product)
+        @foreach ($products as $product)
+                                     <td  class="text-center"><img src="{{$item->image}}" width="100" height="100"></td>
+
             <div class="product-card">
-                <img src="{{ $product->image ? asset('images/' . $product->image) : asset('images/beige-bg.jpg') }}" alt="{{ $product->name }}">
+                <img src="{{ $imagePath }}" alt="{{ $product->name }}">
                 <h2>{{ $product->name }}</h2>
                 <p>{{ $product->price }} ريال</p>
                 <a href="{{ route('products.show', $product->id) }}" class="glow-button">عرض التفاصيل</a>
             </div>
-        @empty
-            <p style="text-align: center;">لا توجد منتجات حالياً.</p>
-        @endforelse
+        @endforeach
     </div>
 </div>
 @endsection
