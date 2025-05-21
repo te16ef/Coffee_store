@@ -119,14 +119,12 @@
 
    <div class="product-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; padding: 40px 20px;">
     @foreach ($products as $product)
-        @if ($product->image)
-            <div class="product-card">
-                <img src="{{ asset($product->image) }}" alt="{{ $product->name }}">
-                <h3>{{ $product->name }}</h3>
-                <p>{{ $product->price }} ريال</p>
-                <a href="{{ route('products.show', $product->id) }}" class="glow-button">عرض التفاصيل</a>
-            </div>
-        @endif
+        <div class="product-card">
+            <img src="{{ $product->image }}" alt="no picture">
+            <h3>{{ $product->name }}</h3>
+            <p>{{ $product->price }} ريال</p>
+            <a href="{{ route('products.show', $product->id) }}" class="glow-button">عرض التفاصيل</a>
+        </div>
     @endforeach
 </div>
 @endsection
