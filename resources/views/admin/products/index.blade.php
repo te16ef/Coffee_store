@@ -117,13 +117,14 @@
         <h1>منتجاتنا</h1>
     </div>
 
-   <div class="product-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; padding: 40px 20px;">
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4">
     @foreach ($products as $product)
-        <div class="product-card">
-            <img src="{{ $product->image }}" alt="no picture">
-            <h3>{{ $product->name }}</h3>
-            <p>{{ $product->price }} ريال</p>
-            <a href="{{ route('products.show', $product->id) }}" class="glow-button">عرض التفاصيل</a>
+        <div class="bg-white rounded-lg shadow p-4 flex flex-col items-center">
+            <img src="{{ asset('images/' . $product->image) }}" alt="{{ $product->name }}" class="h-32 object-cover mb-2 rounded">
+            <h2 class="text-lg font-bold text-center">{{ $product->name }}</h2>
+            <p class="text-gray-600 text-center">{{ $product->description }}</p>
+            <p class="text-green-700 font-semibold mt-1">{{ $product->price }} ريال</p>
+            <a href="{{ route('products.show', $product->id) }}" class="mt-2 bg-green-700 text-white px-3 py-1 rounded hover:bg-green-800">عرض التفاصيل</a>
         </div>
     @endforeach
 </div>
