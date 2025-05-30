@@ -124,7 +124,7 @@
         @foreach ($products as $product)
     @if ($product->image)
         <div class="product-card">
-            <img src="{{ asset($product->image) }}" alt="{{ $product->name }}" width="100" height="100">
+            <img src="{{ asset('images/' . $product->image) }}" alt="{{ $product->name }}" width="100" height="100">
             <h3>{{ $product->name }}</h3>
             <p>{{ $product->price }} ريال</p>
             <a href="{{ route('products.show', $product->id) }}" class="glow-button">عرض التفاصيل</a>

@@ -25,6 +25,28 @@
             padding: 12px 0;
         }
     }
+
+    .glow-btn {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .glow-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -75%;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent);
+        transform: skewX(-20deg);
+        animation: shine 1.5s infinite;
+    }
+
+    @keyframes shine {
+        0% { left: -75%; }
+        100% { left: 125%; }
+    }
 </style>
 
 <div style="background-image: url('{{ asset('images/coffee-bg.jpg') }}'); background-size: cover; background-position: center; min-height: 100vh; display: grid; place-items: center; padding: 20px;">

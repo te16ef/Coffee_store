@@ -4,6 +4,11 @@
 
 @section('content')
 <style>
+    body {
+        background: url('{{ asset('images/coffee-bg.jpg') }}') no-repeat center center fixed;
+        background-size: cover;
+    }
+
     .checkout-card {
         background-color: #f8d7da;
         padding: 25px;

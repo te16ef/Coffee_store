@@ -4,6 +4,12 @@
 
 @section('content')
 <style>
+    body {
+        background: url('{{ asset('images/coffee-bg.jpg') }}') no-repeat center center fixed;
+        background-size: cover;
+        font-family: 'Amiri', serif;
+    }
+
     .card-container {
         min-height: 100vh;
         display: flex;
@@ -159,7 +165,7 @@
     @endif
 
     <div class="card">
-        <img src="{{ asset('images/' . $product->image) }}" alt="{{ $product->name }}">
+        <img src="{{ $product->image ? asset('images/' . $product->image) : asset('images/default.jpg') }}" alt="{{ $product->name }}" class="mx-auto mb-4 rounded-lg shadow-md">
         <h2>{{ $product->name }}</h2>
         <div class="description">{{ $product->description }}</div>
         <div class="price">{{ $product->price }} ريال</div>

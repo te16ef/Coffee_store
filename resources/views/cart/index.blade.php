@@ -64,6 +64,37 @@
         box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
+    .glow-btn {
+        background-color: #14532d;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 6px;
+        font-weight: bold;
+        text-decoration: none;
+        display: inline-block;
+        position: relative;
+        overflow: hidden;
+        margin-top: 30px;
+    }
+
+    .glow-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -75%;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent);
+        transform: skewX(-20deg);
+        animation: shine 1.5s infinite;
+    }
+
+    @keyframes shine {
+        0% { left: -75%; }
+        100% { left: 125%; }
+    }
+
     @media (max-width: 640px) {
         .card {
             max-width: 100%;
@@ -82,6 +113,10 @@
         }
 
         .card button {
+            width: 100%;
+        }
+
+        .glow-btn {
             width: 100%;
         }
     }
@@ -113,11 +148,12 @@
                         @method('DELETE')
                         <button type="submit">إزالة من السلة</button>
                     </form>
-       <a href="{{ route('checkout') }}" style="display: inline-block; background-color: #14532d; color: white; padding: 8px 16px; border-radius: 6px; margin-top: 8px; text-decoration: none;">
-    إتمام الطلب
-</a>
                 </div>
             @endforeach
+        </div>
+
+        <div style="text-align: center;">
+            <a href="{{ route('checkout') }}" class="glow-btn">إتمام الطلب</a>
         </div>
 
         <script>
@@ -140,7 +176,6 @@
                 }
             }
         </script>
-
     @else
         <div style="display: flex; justify-content: center; align-items: center; min-height: 50vh;">
             <div style="background-color: #f8d7da; color: #333; padding: 25px 30px; border-radius: 10px; font-size: 1.1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
