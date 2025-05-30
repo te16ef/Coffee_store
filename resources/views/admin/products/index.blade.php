@@ -116,8 +116,7 @@
     <div class="heading-card">
         <h1>منتجاتنا</h1>
     </div>
-
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
     @foreach ($products as $product)
         <div class="bg-white rounded-lg shadow p-4 flex flex-col items-center">
             <img src="{{ asset('images/' . $product->image) }}" alt="{{ $product->name }}" class="h-32 object-cover mb-2 rounded">
