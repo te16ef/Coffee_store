@@ -1,3 +1,0 @@
-DB_CONNECTION=sqlite
-DB_DATABASE=C:\Projects\coffee-store\database\database.sqlite
-DB_FOREIGN_KEYS=true
