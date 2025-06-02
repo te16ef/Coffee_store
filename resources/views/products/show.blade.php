@@ -175,7 +175,7 @@
             <button type="submit" class="glow-btn">أضف إلى السلة</button>
         </form>
 
-        <a href="{{ route('products.index') }}" class="glow-btn back-btn">رجوع إلى المنتجات</a>
+        <a href="{{ route('products.index') }}" class="glow-btn back-btn block w-full text-center bg-pink-600 text-white font-semibold py-2 mt-2 rounded hover:bg-pink-700 transition">رجوع إلى المنتجات</a>
     </div>
 </div>
 @endsection

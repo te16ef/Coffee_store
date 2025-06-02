@@ -1,11 +1,14 @@
 body {
     background: url('../images/coffee-bg.jpg') no-repeat center center fixed;
     background-size: cover;
+    margin: 0%;
+    padding: 0%;
 }
 
 .heading-card {
     background-color: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
     border-radius: 10px;
     padding: 20px 40px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
@@ -146,7 +149,7 @@ body {
 }
 
 /* Responsive Fixes for Mobile */
-@media (max-width: 768px) {
+@media (max-width: 640px) {
     .product-grid {
         grid-template-columns: repeat(2, 1fr) !important;
         gap: 20px;
@@ -154,11 +157,11 @@ body {
     }
 
     .product-card {
-        padding: 12px;
+        padding: 10px;
     }
 
     .product-card img {
-        height: 150px;
+        height: 140px;
     }
 
     .product-card h2 {
@@ -172,8 +175,9 @@ body {
     .start-taste-btn,
     .glow-btn {
         padding: 10px 18px;
-        font-size: 0.95rem;
+        font-size: 0.9rem;
         border-radius: 6px;
+        width: 100%;
     }
 
     .heading-card h1 {
