@@ -119,11 +119,11 @@
   <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
     @foreach ($products as $product)
         <div class="bg-white rounded-lg shadow p-4 flex flex-col items-center">
-            <img src="{{ asset('images/' . $product->image) }}" alt="{{ $product->name }}" class="h-32 object-cover mb-2 rounded">
+            <img src="{{ asset('images/' . $product->image) }}" alt="{{ $product->name }}" class="h-32 w-full object-cover rounded mb-2">
             <h2 class="text-lg font-bold text-center">{{ $product->name }}</h2>
             <p class="text-gray-600 text-center">{{ $product->description }}</p>
             <p class="text-green-700 font-semibold mt-1">{{ $product->price }} ريال</p>
-            <a href="{{ route('products.show', $product->id) }}" class="mt-2 w-full text-center bg-green-700 text-white font-semibold py-2 rounded hover:bg-green-800 transition">عرض التفاصيل</a>
+            <a href="{{ route('products.show', $product->id) }}" class="mt-2 w-full text-center bg-green-700 text-white font-semibold py-1 rounded hover:bg-green-800 transition">عرض التفاصيل</a>
         </div>
     @endforeach
 </div>
