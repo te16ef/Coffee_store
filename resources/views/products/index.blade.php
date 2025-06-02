@@ -28,13 +28,15 @@
         margin: 0;
     }
 
-    .product-card {
+  .product-card {
         background-color: #f5f5dc;
         border-radius: 10px;
         box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         text-align: center;
         transition: transform 0.3s ease;
-        padding: 20px;
+        padding: 25px;
+        max-width: 180px;
+        margin: 0 auto;
     }
 
     .product-card:hover {
@@ -44,7 +46,8 @@
     .product-card img {
         width: 100%;
         height: 200px;
-        object-fit: cover;
+        min-height: 250px;
+        object-fit: contain;
         border-radius: 8px;
         margin-bottom: 15px;
     }
@@ -120,11 +123,13 @@
     </div>
 
     <!-- شبكة المنتجات -->
-    <div class="product-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; padding: 40px 20px;">
+   <div class="product-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; padding: 40px 20px;">
         @foreach ($products as $product)
     @if ($product->image)
         <div class="product-card">
-            <img src="{{ asset('images/' . $product->image) }}" alt="{{ $product->name }}" width="100" height="100">
+           <img src="{{ asset('images/' . $product->image) }}"
+     alt="{{ $product->name }}"
+     style="object-fit: contain; width: 100%; height: auto; max-height: 180px; border-radius: 8px;">
             <h3>{{ $product->name }}</h3>
             <p>{{ $product->price }} ريال</p>
             <a href="{{ route('products.show', $product->id) }}" class="glow-button">عرض التفاصيل</a>
