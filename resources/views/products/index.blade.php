@@ -30,33 +30,40 @@
 
   .product-card {
         background-color: #f5f5dc;
-        border-radius: 10px;
+        border-radius: 8px;
         box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         text-align: center;
         transition: transform 0.3s ease;
-        padding: 10px;
-        max-width: 180px;
+        padding: 6px;
+        max-width: 170px;
         margin: 0 auto;
     }
+
+
 
     .product-card:hover {
         transform: translateY(-5px);
     }
 
     .product-card img {
-        width: 100%;
+        width: 150px;
         height: 160px;
         min-height: 250px;
         object-fit: cover;
         border-radius: 8px;
-        margin-bottom: 15px;
+        margin-bottom: 5px;
+        display: block;
     }
 
     .product-card h2 {
         font-size: 1.1rem;
         font-weight: bold;
         color: #333;
-        margin-bottom: 10px;
+        margin-bottom: 0px;
+    }
+
+     .product-card h3 {
+        white-space: nowrap;
     }
 
     .product-card p {
@@ -76,6 +83,7 @@
         font-size: 0.9rem;
         position: relative;
         overflow: hidden;
+        width: 60%;
     }
 
     .glow-button::before {
@@ -98,8 +106,11 @@
     @media (max-width: 640px) {
         .product-grid {
             grid-template-columns: repeat(2, 1fr);
-            padding: 20px 10px;
-            gap: 20px;
+            padding: 10px;
+            gap: 10px;
+            justify-self: center;
+            width: 100%;
+            padding: 10px;
         }
 
         .product-card {
@@ -113,7 +124,9 @@
         .product-card p {
             font-size: 0.95rem;
         }
+
     }
+
 </style>
 
 <div class="min-h-screen">
@@ -123,16 +136,16 @@
     </div>
 
     <!-- شبكة المنتجات -->
-   <div class="product-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; padding: 40px 20px;">
+   <div class="product-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 10px 1px ;">
         @foreach ($products as $product)
     @if ($product->image)
         <div class="product-card">
            <img src="{{ asset('images/' . $product->image) }}"
      alt="{{ $product->name }}"
-     style="object-fit: contain; width: 100%; height: auto; max-height: 180px; border-radius: 8px;">
+     style="object-fit: contain; width: 150px; height: 250px; max-height: 180px; border-radius: 8px;">
             <h3>{{ $product->name }}</h3>
             <p>{{ $product->price }} ريال</p>
-            <a href="{{ route('products.show', $product->id) }}" class="glow-button">عرض التفاصيل</a>
+            <a href="{{ route('products.show', $product->id) }}" class="glow-button show-details-btn">عرض التفاصيل</a>
         </div>
     @endif
 @endforeach

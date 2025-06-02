@@ -9,6 +9,8 @@ class ProductSeeder extends Seeder
 {
     public function run(): void
     {
+        DB::table('products')->truncate(); // Clear existing products
+        // Insert new products
         DB::table('products')->insert([
             [
                 'name' => 'حبّة محمصة - كولومبيا',
@@ -46,7 +48,7 @@ class ProductSeeder extends Seeder
                 'category' => 'أكواب',
             ],
             [
-                'name' => 'مجموعة أدوات قهوة مختصة',
+                'name' => 'أدوات قهوة مختصة',
                 'description' => "العدة كلها بطقم أنيق وعملي بسيط، وكأنك باريستا !",
                 'price' => 55,
                 'image' => 'v60-filter.png',

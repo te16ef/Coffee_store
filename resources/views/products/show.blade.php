@@ -22,11 +22,11 @@
 
     .card {
         background-color: rgba(255, 255, 255, 0.6);
-        padding: 20px;
+        padding: 8px;
         border-radius: 12px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         text-align: center;
-        width: 100%;
+        width: 150%;
         max-width: 360px;
         backdrop-filter: blur(4px);
         position: relative;
@@ -134,7 +134,7 @@
         }
 
         .card {
-            max-width: 100%;
+            max-width: 70%;
         }
 
         .card img {
@@ -150,7 +150,7 @@
         }
 
         .glow-btn {
-            width: 100%;
+            width: 50%;
         }
     }
 </style>
@@ -172,10 +172,10 @@
 
         <form action="{{ route('cart.add', $product->id) }}" method="POST">
             @csrf
-            <button type="submit" class="glow-btn">أضف إلى السلة</button>
+            <button type="submit" class="glow-btn add-to-cart-btn">أضف إلى السلة</button>
         </form>
 
-        <a href="{{ route('products.index') }}" class="glow-btn back-btn block w-full text-center bg-pink-600 text-white font-semibold py-2 mt-2 rounded hover:bg-pink-700 transition">رجوع إلى المنتجات</a>
+        <a href="{{ route('products.index') }}" class="glow-btn back-to-products-btn">رجوع إلى المنتجات</a>
     </div>
 </div>
 @endsection

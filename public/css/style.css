@@ -30,7 +30,9 @@ body {
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     text-align: center;
     transition: transform 0.3s ease;
-    padding: 20px;
+    padding: 8px; /* المسافة الداخلية للبطاقة */
+    max-height: 200px; /* تحديد ارتفاع البطاقة */
+    width: 150px; /* تحديد عرض البطاقة */
 }
 
 .product-card:hover {
@@ -39,25 +41,49 @@ body {
 
 .product-card img {
     width: 100%;
-    max-width: 100%;
-    height: auto;
+    max-width: 100%;;
     object-fit: cover;
     border-radius: 8px;
-    margin-bottom: 10px;
+    margin-bottom: 0; /* إزالة المسافة السفلية */
+    height: 160px; /* تحديد ارتفاع الصورة */
+    display: block; /* جعل الصورة كتلة */
+    vertical-align: middle; /* محاذاة الصورة في المنتصف */
 }
 
 .product-card h2 {
-    font-size: 1.1rem;
+    font-size: 0.95rem;
     font-weight: bold;
     color: #333;
-    margin-bottom: 10px;
+    margin-top: 5px; /* المسافة بين العنوان والسعر */
+}
+
+.product-card h3 {
+        white-space: nowrap;
+        font-size: 0.85rem;
+        margin-bottom: 2px; /* المسافة بين العنوان والسعر */
+        margin: 0; /* المسافة بين العنوان والسعر */
+}
+
+
+.product-card h3 {
+    font-size: 0.85rem;
+    margin-bottom: 2px; /* المسافة بين العنوان والسعر */
+    margin: 0; /* المسافة بين العنوان والسعر */
 }
 
 .product-card p {
-    font-size: 1rem;
+    font-size: 0.85rem;
     color: #14532d;
     font-weight: bold;
     margin-bottom: 15px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px; /* المسافة بين العناصر */
+    padding: 5px; /* المسافة الداخلية للحاوية */
+    justify-items: center; /* محاذاة العناصر في المنتصف */
 }
 
 .glow-button {
@@ -67,9 +93,11 @@ body {
     border-radius: 6px;
     text-decoration: none;
     display: inline-block;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     position: relative;
     overflow: hidden;
+    margin: 5px auto;
+    width: 50;
 }
 
 .glow-button::before {
@@ -99,7 +127,7 @@ body {
     position: relative;
     overflow: hidden;
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: 0.3s ease;
     display: inline-block;
     text-decoration: none;
 }
@@ -119,14 +147,17 @@ body {
 .glow-btn {
     background-color: #14532d;
     color: white;
-    padding: 10px 24px;
+    padding: 10px 20px;
     border-radius: 8px;
     font-weight: bold;
+    font-size: 1rem;
     position: relative;
     overflow: hidden;
-    transition: background 0.3s ease;
-    display: inline-block;
+    transition: 0.3s ease;
+    display: block;
     text-decoration: none;
+    margin: 10px auto;
+    border-radius: 8px;
 }
 
 .glow-btn::before {
@@ -153,21 +184,23 @@ body {
 @media (max-width: 640px) {
     .product-grid {
         grid-template-columns: repeat(2, 1fr) !important;
-        gap: 20px;
-        padding: 20px 10px;
+        gap: 10px;
+        padding: 10px;
     }
 
     .product-card {
-        padding: 10px;
-        box-sizing: border-box;
+        padding: 8px;
+        max-height: 200px; /* تحديد ارتفاع البطاقة */
     }
 
     .product-card img {
-        height: 140px;
+        height: 100px;
+        margin-bottom: 5px; /* تقليل المسافة بين الصورة والعنوان */
     }
 
     .product-card h2 {
-        font-size: 1rem;
+        font-size: 0.95rem;
+        margin: 0; /* إزالة المسافة السفلية */
     }
 
     .product-card p {
@@ -179,7 +212,7 @@ body {
         padding: 10px 18px;
         font-size: 0.9rem;
         border-radius: 6px;
-        width: 100%;
+        width: 50%;
     }
 
     .heading-card h1 {
@@ -190,7 +223,7 @@ body {
 .glow-button,
 .return-to-products,
 .complete-order-btn {
-  width: 100%;
+  width: 50%;
   display: block;
   font-size: 0.9rem;
   font-weight: bold;
@@ -207,5 +240,28 @@ body {
 .complete-order-btn {
   background-color: #14532d;
   color: #fff;
+}
+
+/* زر عرض التفاصيل */
+a.glow-button {
+  width: 60% !important;
+}
+
+
+/* زر عرض التفاصيل */
+.show-details-btn {
+  width: 60%; 
+}
+
+/* زر أضف إلى السلة */
+.add-to-cart-btn {
+  width: 50%; 
+  display: block;
+  margin: 10px auto;
+}
+
+/* زر رجوع إلى المنتجات */
+.back-to-products-btn {
+  width: 50%;
 }
 }

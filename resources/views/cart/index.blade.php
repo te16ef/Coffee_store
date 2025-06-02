@@ -67,15 +67,16 @@
     .glow-btn {
         background-color: #14532d;
         color: white;
-        padding: 10px 20px;
+        padding: 10px 16px;
         border: none;
         border-radius: 6px;
-        font-weight: bold;
+        font-size: 0.9rem;
         text-decoration: none;
         display: inline-block;
         position: relative;
         overflow: hidden;
         margin-top: 30px;
+    
     }
 
     .glow-btn::before {
@@ -113,11 +114,11 @@
         }
 
         .card button {
-            width: 100%;
+            width: 70%;
         }
 
         .glow-btn {
-            width: 100%;
+            width: 40%;
         }
     }
 </style>
