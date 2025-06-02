@@ -16,6 +16,8 @@ class ContactController extends Controller
         ]);
 
         Mail::raw("رسالة جديدة من: {$data['name']} ({$data['email']})\n\n{$data['message']}", function ($message) {
+            $message->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
+            // تأكد من تعيين البريد الإلكتروني الصحيح في ملف .env
             $message->to('Te16ef@gmail.com')  
                     ->subject('رسالة جديدة من نموذج التواصل');
         });
