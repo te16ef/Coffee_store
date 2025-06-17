@@ -37,3 +37,6 @@ Route::prefix('admin/products')->name('admin.products.')->controller(ProductAdmi
     Route::put('/{id}', 'update')->name('update');
     Route::delete('/{id}', 'destroy')->name('destroy');
 });
+// صفحة الاتصال
+Route::view('/contact', 'contact')->name('contact'); // يعرض صفحة التواصل
+Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.send'); // يرسل الرسالة
